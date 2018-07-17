@@ -39,6 +39,15 @@ namespace Registrar.Controllers
             allCoursesStudents.FindCourse(id);
             return View(allCoursesStudents);
         }
+
+        [HttpPost("/course/{id}/student/{studentId}/delete")]
+        public ActionResult Delete(int id, int studentId)
+        {
+            Student student = Student.Find(studentId);
+            Course course = Course.Find(id);
+            course.DeleteStudent(student);
+            return RedirectToAction("Details");
+        }
         
     }
 }

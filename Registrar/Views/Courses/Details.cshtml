@@ -8,6 +8,9 @@
 @foreach (var student in Model.FoundCourse.GetStudents())
 {
     <p><a href="/students/@student.Id">@student.FirstName @student.LastName</a></p>
+    <form id="dropCourseForm" action="/course/@Model.FoundCourse.Id/student/@student.Id/delete" method="post">  
+        <button type="submit">Expel</button>
+    </form>
 }
 
 <h4><a href="/courses">Back to Courses</a></h4>
