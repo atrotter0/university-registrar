@@ -2,14 +2,19 @@
     ViewData["Title"] = "Student Details";
 }
 
-<h2>Name: @Model.FoundStudent.FirstName @Model.FoundStudent.LastName</h2>
+<h2>
+    Name: @Model.FoundStudent.FirstName @Model.FoundStudent.LastName
+    <form action="/students/@Model.FoundStudent.Id/delete" method="POST">
+        <button type="submit">Delete Student</button>
+    </form>
+</h2>
 <h2>Enrollment Date: @Model.FoundStudent.StartDate</h2>
 
 @foreach (var course in Model.FoundStudent.GetCourses())
 {
     <div class="course-item">
         <a href="/courses/@course.Id">@course.CourseName</a>
-        <form id="dropCourseForm" action="/students/@Model.FoundStudent.Id/courses/@course.Id/delete" method="post">  
+        <form id="dropCourseForm" action="/students/@Model.FoundStudent.Id/courses/@course.Id/delete" method="POST">  
            <button type="submit">Drop</button>
         </form>
     </div>

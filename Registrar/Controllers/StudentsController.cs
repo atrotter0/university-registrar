@@ -49,6 +49,14 @@ namespace Registrar.Controllers
             return RedirectToAction("Details");
         }
 
+        [HttpPost("/students/{id}/delete")]
+        public ActionResult Delete(int id)
+        {
+            Student student = Student.Find(id);
+            student.Delete();
+            return RedirectToAction("Index"); 
+        }
+
         [HttpPost("/students/{id}/courses/{courseId}/delete")]
         public ActionResult Delete(int id, int courseId)
         {

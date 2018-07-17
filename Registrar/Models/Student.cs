@@ -58,6 +58,22 @@ namespace Registrar.Models
             }
         }
 
+        public void Delete()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM students WHERE id = @studentId; DELETE FROM students_courses WHERE student_id = @studentId";
+            cmd.Parameters.AddWithValue("@studentId", this.Id);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
         public static List<Student> GetAll()
         {
             List<Student> allStudents = new List<Student> { };
