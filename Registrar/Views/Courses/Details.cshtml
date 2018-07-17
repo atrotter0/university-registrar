@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Course Details";
+}
+
+<h2>Name: @Model.FoundCourse.CourseName</h2>
+<h3>@Model.FoundCourse.CourseNumber</h3>
+
+@foreach (var student in Model.FoundCourse.GetStudents())
+{
+    <p><a href="/students/@student.Id">@student.FirstName @student.LastName</a></p>
+}
+
+<h4><a href="/courses">Back to Courses</a></h4>

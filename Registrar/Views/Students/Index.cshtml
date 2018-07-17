@@ -2,9 +2,9 @@
     ViewData["Title"] = "Students";
 }
 
+<h4><a href="students/create">Enroll new student</a></h4>
+
 @foreach (var student in Model)
 {
-    <p>@student.FirstName @student.LastName</p>
+    <p><a href="students/@student.Id">@student.FirstName @student.LastName</a></p>
 }
-
-<h4><a href="students/create">Enroll new student</a></h4>

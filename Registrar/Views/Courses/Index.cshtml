@@ -2,9 +2,9 @@
     ViewData["Title"] = "Courses";
 }
 
+<h4><a href="/courses/new">Create New Course</a></h4>
+
 @foreach (var course in Model)
 {
-    <p>@course.CourseName</p>
+    <p><a href="/courses/@course.Id">@course.CourseName</a></p>
 }
-
-<h4><a href="/courses/new">Create New Course</a></h4>

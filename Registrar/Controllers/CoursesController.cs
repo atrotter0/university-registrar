@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Registrar.Models;
+using Registrar.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Registrar.Controllers
@@ -29,6 +30,14 @@ namespace Registrar.Controllers
             Course course = new Course(courseName, courseNumber);
             course.Save();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet("/courses/{id}")]
+        public ActionResult Details(int id)
+        {
+            StudentsCourses allCoursesStudents = new StudentsCourses();
+            allCoursesStudents.FindCourse(id);
+            return View(allCoursesStudents);
         }
         
     }

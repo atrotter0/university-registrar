@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Registrar.Models;
+using Registrar.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Registrar.Controllers
@@ -30,6 +31,22 @@ namespace Registrar.Controllers
             newStudent.Save();
             return RedirectToAction("Index");
         }
-    
+
+        [HttpGet("/students/{id}")]
+        public ActionResult Details(int id)
+        {
+            StudentsCourses allCoursesStudents = new StudentsCourses();
+            allCoursesStudents.FindStudent(id);
+            return View(allCoursesStudents);
+        }
+
+        [HttpPost("/students/{id}/update")]
+        public ActionResult Update(int id, int courseId)
+        {
+            Student student = Student.Find(id);
+            Course course = Course.Find(courseId);
+            student.AddCourse(course);
+            return RedirectToAction("Details");
+        }
     }
 }

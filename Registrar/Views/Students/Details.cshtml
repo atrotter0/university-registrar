@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h2>Name: @Model.FoundStudent.FirstName @Model.FoundStudent.LastName</h2>
+<h2>Enrollment Date: @Model.FoundStudent.StartDate</h2>
+
+@foreach (var course in Model.FoundStudent.GetCourses())
+{
+    <p><a href="/courses/@course.Id">@course.CourseName</a></p>
+}
+
+<form action="/students/@Model.FoundStudent.Id/update" method="POST">
+    <div class="form-group">
+        <select name="courseId" class="form-control">
+            <option>Choose a Course</option>
+            @foreach (var course in @Model.AllCourses)
+            {
+                <option value=@course.Id>@course.CourseName</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-lg btn-info">Enroll In Course</button>
+</form>
+
+<h4><a href="/students">Back to Students</a></h4>
