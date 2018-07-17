@@ -17,6 +17,19 @@ namespace Registrar.Controllers
             return View(allCourses);
         }
 
+        [HttpGet("/courses/new")]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost("/courses")]
+        public ActionResult CreateCourse(string courseName, string courseNumber)
+        {
+            Course course = new Course(courseName, courseNumber);
+            course.Save();
+            return RedirectToAction("Index");
+        }
         
     }
 }

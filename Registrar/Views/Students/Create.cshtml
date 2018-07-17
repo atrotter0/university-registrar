@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Students";
+    ViewData["Title"] = "Create Student";
 }
 
 <form action="/students" method="post">
@@ -8,15 +8,13 @@
         <label for='firstName'><h4>First Name</h4></label>
         <input name='firstName' type="text" class='form-control' required>
     </div>
-    
     <div class='form-group'>
         <label for='lastName'><h4>Last Name</h4></label>
         <input name='lastName' type="text" class='form-control' required>
     </div>
-
-      <div class='form-group'>
+    <div class='form-group'>
         <label for='startDate'><h4>Enrollment Date</h4></label>
         <input name='startDate' type="date" class='form-control' required>
-     </div>
-     <button type="submit" class="btn btn-lg btn-info">Enroll!</button> 
-</form> 
+    </div>
+    <button type="submit" class="btn btn-lg btn-info">Enroll!</button> 
+</form>

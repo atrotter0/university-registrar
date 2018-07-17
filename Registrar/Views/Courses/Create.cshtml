@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Create Course";
+}
+
+<form action="/courses" method="post">
+    <h1>Create New Course</h1>
+    <div class='form-group'>
+        <label for='courseName'><h4>First Name</h4></label>
+        <input name='courseName' type="text" class='form-control' required>
+    </div>
+    <div class='form-group'>
+        <label for='courseNumber'><h4>Last Name</h4></label>
+        <input name='courseNumber' type="text" class='form-control' required>
+    </div>
+    <button type="submit" class="btn btn-lg btn-info">Create Course</button> 
+</form>
