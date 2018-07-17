@@ -139,6 +139,23 @@ namespace Registrar.Models
             }
         }
 
+        public void DeleteCourse(Course newCourse)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM students_courses WHERE course_id = @courseId AND student_id = @studentId;";
+            cmd.Parameters.AddWithValue("@courseId", newCourse.Id);
+            cmd.Parameters.AddWithValue("@studentId", this.Id);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
         public List<Course> GetCourses()
         {
             MySqlConnection conn = DB.Connection();

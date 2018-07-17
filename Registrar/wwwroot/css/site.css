@@ -28,6 +28,14 @@ textarea {
     width: 100%
 }
 
+.course-item {
+    margin: 10px;
+}
+
+#dropCourseForm {
+    display: inline-block;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
