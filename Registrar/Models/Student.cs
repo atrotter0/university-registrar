@@ -43,11 +43,11 @@ namespace Registrar.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO student (first_name, last_name, start_date) VALUES (@firstName, @lastName, @startDate);";
+            cmd.CommandText = @"INSERT INTO students (first_name, last_name, start_date) VALUES (@firstName, @lastName, @startDate);";
 
             cmd.Parameters.AddWithValue("@firstName", this.FirstName);
             cmd.Parameters.AddWithValue("@lastName", this.LastName);
-            cmd.Parameters.AddWithValue("@startName", this.StartDate);
+            cmd.Parameters.AddWithValue("@startDate", this.StartDate);
 
             cmd.ExecuteNonQuery();
             Id = (int)cmd.LastInsertedId;
@@ -64,7 +64,7 @@ namespace Registrar.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM student;";
+            cmd.CommandText = @"SELECT * FROM students;";
             var rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())
             {
@@ -89,7 +89,7 @@ namespace Registrar.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM student WHERE id = (@searchId);";
+            cmd.CommandText = @"SELECT * FROM students WHERE id = (@searchId);";
 
             MySqlParameter searchId = new MySqlParameter();
             searchId.ParameterName = "@searchId";

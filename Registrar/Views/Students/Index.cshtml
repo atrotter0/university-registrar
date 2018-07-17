@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Students";
+}
+
+@foreach (var student in Model)
+{
+    <p>@student.FirstName @student.LastName</p>
+}
+
+<h4><a href="students/create">Enroll new student</a></h4>
